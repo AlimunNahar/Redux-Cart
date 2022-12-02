@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Inventory from "./components/Inventory/Inventory";
 import Main from "./components/layout/Main";
 import MyOrders from "./components/MyOrders/MyOrders";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,7 +33,12 @@ function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <div>
+      <RouterProvider router={router}></RouterProvider>
+      <Toaster />
+    </div>
+  );
 }
 
 export default App;

@@ -17,7 +17,7 @@ const MyOrders = () => {
   return (
     <div>
       <h2 className="text-3xl text-center font-semibold mt-8">Shopping List</h2>
-      <div className="flex h-[580px] justify-between">
+      <div className="lg:flex h-[800px] justify-between">
         <div className="overflow-x-auto mx-auto my-12">
           {carts.length ? (
             <div className="overflow-x-auto">

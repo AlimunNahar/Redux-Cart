@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const initialState = {
+  carts: localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [],
   loading: true,
   products: [],
-  carts: [],
 };
 
 export const getAllProducts = createAsyncThunk(
@@ -28,7 +31,10 @@ const counterSlice = createSlice({
       } else {
         const tempProducts = { ...action.payload, quantity: 1 };
         state.carts.push(tempProducts);
+        toast.success("New product added to your wishlist");
       }
+
+      localStorage.setItem("cartItems", JSON.stringify(state.carts));
     },
     decrement: (state, action) => {
       let index = state.carts.findIndex((item) => item.id === action.payload);
@@ -37,16 +43,23 @@ const counterSlice = createSlice({
       } else {
         state.carts[index].quantity -= 1;
       }
+
+      localStorage.setItem("cartItems", JSON.stringify(state.carts));
     },
     increment: (state, action) => {
       let index = state.carts.findIndex((item) => item.id === action.payload);
       state.carts[index].quantity += 1;
+
+      localStorage.setItem("cartItems", JSON.stringify(state.carts));
     },
     DeleteCartItem: (state, action) => {
       const remainingItems = state.carts.filter((item) => {
         return item.id !== action.payload;
       });
       state.carts = remainingItems;
+      toast.error("Product removed form your cart");
+
+      localStorage.setItem("cartItems", JSON.stringify(state.carts));
     },
   },
   extraReducers: {

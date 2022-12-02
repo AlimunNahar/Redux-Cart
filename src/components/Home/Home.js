@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import { useDispatch, useSelector } from "react-redux";
