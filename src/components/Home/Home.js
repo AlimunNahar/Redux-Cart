@@ -15,8 +15,8 @@ const Home = () => {
 
   const { products, loading } = useSelector((state) => state.products);
   return (
-    <div className="flex justify-between">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="flex justify-between mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ml-5">
         {loading && (
           <div className="mx-auto my-20 w-16 h-16 border-4 border-dashed rounded-full animate-spin border-violet-400"></div>
         )}
@@ -27,10 +27,12 @@ const Home = () => {
           : "No Products to display"}
       </div>
       <div className="hidden lg:block">
-        <Cart />
-        <Link to="/orders">
-          <button className="btn btn-accent my-8">Review Orders</button>
-        </Link>
+        <div className="top-0 sticky">
+          <Cart />
+          <Link to="/orders">
+            <button className="btn btn-accent my-8">Review Orders</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

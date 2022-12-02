@@ -13,6 +13,7 @@ const MyOrders = () => {
   const dispatch = useDispatch();
   // console.log(dispatch);
   const { carts } = useSelector((state) => state.products);
+  // console.log(carts);
   return (
     <div>
       <h2 className="text-3xl text-center font-semibold mt-8">Shopping List</h2>
@@ -34,27 +35,33 @@ const MyOrders = () => {
                   {carts.map((cart, idx) => (
                     <tr key={idx}>
                       <td>
-                        <div className="avatar">
-                          <div className="w-24 rounded-xl">
-                            <img src={cart.img} alt="cart_images" />
+                        <>
+                          <div className="avatar">
+                            <div className="w-24 rounded-xl">
+                              <img src={cart.img} alt="cart_images" />
+                            </div>
                           </div>
-                        </div>
+                        </>
                       </td>
                       <td>{cart.name}</td>
                       <td>{cart.price * cart.quantity}</td>
                       <td>
-                        <div className="flex text-lg">
-                          <button onClick={() => dispatch(decrement(cart.id))}>
-                            <AiOutlineMinusSquare />
-                          </button>
-                          <p className="mx-3">{cart.quantity}</p>
-                          <button
-                            onClick={() => dispatch(increment(cart.id))}
-                            className=""
-                          >
-                            <AiOutlinePlusSquare />
-                          </button>
-                        </div>
+                        <>
+                          <div className="flex text-lg">
+                            <button
+                              onClick={() => dispatch(decrement(cart.id))}
+                            >
+                              <AiOutlineMinusSquare />
+                            </button>
+                            <p className="mx-3">{cart.quantity}</p>
+                            <button
+                              onClick={() => dispatch(increment(cart.id))}
+                              className=""
+                            >
+                              <AiOutlinePlusSquare />
+                            </button>
+                          </div>
+                        </>
                       </td>
                       <td>
                         <button
