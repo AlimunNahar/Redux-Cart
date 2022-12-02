@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const Cart = () => {
   const { carts } = useSelector((state) => state.products);
-  // console.log(carts);
+  console.log(carts);
   return (
     <div className="top-0 sticky py-5 pl-5 lg:pr-10 bg-green-100">
       <h4 className="text-3xl font-bold text-accent pb-5">Order Summary</h4>

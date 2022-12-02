@@ -32,7 +32,7 @@ const MyOrders = () => {
                           </div>
                         </div>
                       </th>
-                      <td>Cy Ganderton</td>
+                      <td>{cart.name}</td>
                       <td>Quality Control Specialist</td>
                       <td>Blue</td>
                       <td className="text-xl text-red-500">
